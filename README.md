@@ -29,8 +29,6 @@ The dataset contains labeled examples of hate speech and non-hate speech which w
 
 *Note: Large datasets are not included in this repository due to GitHub storage limitations.*
 
----
-
 ## Project Workflow
 
 1. **Data Collection**
@@ -63,15 +61,10 @@ The dataset contains labeled examples of hate speech and non-hate speech which w
 
 6. **Explainability**
    LIME was used to provide interpretable explanations for model predictions.
-
----
-
+   
 ## Results
 
 Among the evaluated models, **BERT-based transformer models showed the best performance** in detecting contextual and subtle forms of hate speech compared to traditional machine learning and deep learning models.
-
----
-
 
 ## Future Improvements
 
@@ -79,15 +72,11 @@ Among the evaluated models, **BERT-based transformer models showed the best perf
 * Improve model performance with larger training datasets
 * Deploy the model as a web application for real-time moderation
 
----
-
 ## Author
 
 **Apoorva Gugri**
 Computer Science Graduate
 Interested in Artificial Intelligence, Data Science, and Natural Language Processing.
-
----
 
 ### Small advice
 
