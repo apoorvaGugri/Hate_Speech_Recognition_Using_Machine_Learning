@@ -1,0 +1,444 @@
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hate Speech Detection</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Movies Pro Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/popuo-box.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/easy-responsive-tabs.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/zoomslider.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/table-style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/basictable.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/list.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link href="{{ url_for('static', filename='css/font-awesome.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/modernizr-2.6.2.min.js') }}"></script>
+    <link href='//fonts.googleapis.com/css?family=Tangerine:400,700' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--//web-fonts-->
+</head>
+
+<body>
+    <!--/main-header-->
+    <!--/banner-section-->
+    <div id="demo-1" class="banner-inner">
+        <div class="banner-inner-dott">
+            <!--/header-w3l-->
+            <div class="header-w3-agileits" id="home">
+                <div class="inner-header-agile part2">
+                    <nav class="navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <h1><a href="index.html"><span>H</span>ate <span>S</span>peech <span>D</span>etection</a>
+                            </h1>
+                        </div>
+                        <!-- navbar-header -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+                        </div>
+                        <div class="clearfix"> </div>
+                    </nav>
+
+
+                </div>
+
+            </div>
+            <!--//header-w3l-->
+        </div>
+    </div>
+    <!--/banner-section-->
+    <!--//main-header-->
+    <!--/banner-bottom-->
+    <div class="w3_agilits_banner_bootm">
+        <div class="w3_agilits_inner_bottom">
+            <div class="col-md-6 wthree_agile_login">
+                <ul>
+                    <li><a href="#" class="login" data-toggle="modal" data-target="#myModal4">Predict Hate Speech</a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="col-md-6 wthree_share_agile">
+
+                <div class="single-agile-shar-buttons">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//banner-bottom-->
+    <!-- Modal1 -->
+    <div class="modal fade" id="myModal4" tabindex="-1" role="dialog">
+
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4>Prediction Form</h4>
+                    <br>
+                    <div class="login-form">
+                        <textarea id="textInput" class="form-control" rows="4" cols="50"
+                            placeholder="Type your text here..."></textarea>
+
+                        <div class="button">
+                            <input type="button" onclick="submitText()" value="Submit Text" />
+                            <input type="button" onclick="startVoiceRecognition()" value="Voice Input" />
+                            <input type="button" onclick="fileupload()" value="Audio Upload" />
+                            <input type="button" onclick="fileupload2()" value="Video Upload" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="fileUploadModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4>Upload Audio File</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        <input type="file" id="audioFile" name="audio" accept="audio/*" required />
+                        <br><br>
+                        <button type="button" onclick="uploadAudio()" class="btn btn-primary">Upload</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //Modal1 -->
+
+    <div class="modal fade" id="fileUploadModal2" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4>Upload Video File</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="uploadvidForm" enctype="multipart/form-data">
+                        <input type="file" id="videoFile" name="video" accept="video/*" required />
+                        <br><br>
+                        <button type="button" onclick="uploadVideo()" class="btn btn-primary">Upload Video</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //Modal1 -->
+
+
+    <!--/content-inner-section-->
+    <div class="w3_content_agilleinfo_inner">
+        <div class="agile_featured_movies">
+            <div class="inner-agile-w3l-part-head">
+                <h3 class="w3l-inner-h-title">Prediction Result</h3>
+            </div>
+            <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                <div id="myTabContent" class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+                        <div class="agile-news-table">
+                            <table id="table-breakpoint" id="table-breakpoint" style="display:none;">
+                                <thead>
+                                    <tr>
+                                        <th colspan="6" id="speechResultBlock">The Prediction result of given text <span
+                                                class="highlight2" id="extractedText"></span> is <span class="highlight2"
+                                                id="speechResult"></span></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--//content-inner-section-->
+
+
+    <!--/footer-bottom-->
+    <div class="contact-w3ls" id="contact">
+        <div class="footer-w3lagile-inner">
+
+        </div>
+
+    </div>
+    <div class="w3agile_footer_copy">
+        <p>© 2024 Movies Pro. All rights reserved | Developed by <a href="#">PESIT</a></p>
+    </div>
+    <a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;">
+        </span></a>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.magnific-popup.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/easy-responsive-tabs.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.basictable.min.js') }}"></script>
+    <script>
+        function submitText() {
+            $('#myModal4').modal('toggle');
+            const text = $('#textInput').val();
+            $('#extractedText').html(text);
+
+            Swal.fire({
+                title: 'Processing...',
+                text: 'Please wait while we process your text.',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            $.ajax({
+                url: 'http://localhost:5000/predict',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ text: text }),
+                success: function (response) {
+                    Swal.close(); // Close loading modal
+                    if (response.prediction == 'Hate Speech') {
+                        let highlightedText = response.text;
+
+                        response.highlighted_keywords.forEach(keyword => {
+                            const keywordRegex = new RegExp(`\\b(${keyword})\\b`, 'gi');
+                            highlightedText = highlightedText.replace(
+                                keywordRegex,
+                                '<span class="highlight">$1</span>'
+                            );
+                        });
+
+                        $('#extractedText').html(highlightedText); // Update with highlighted text
+                    } else {
+                        $('#extractedText').html(response.text); // Plain text if not Hate Speech
+                    }
+
+                    $('#speechResult').html(response.prediction);
+                    $('#table-breakpoint').show();
+                },
+                error: function (err) {
+                    Swal.close(); // Close loading modal
+                    $('#speechResultBlock').html('Error: ' + err.responseText);
+                    $('#table-breakpoint').show();
+                }
+            });
+        }
+
+        function startVoiceRecognition() {
+            if ('webkitSpeechRecognition' in window) {
+                const recognition = new webkitSpeechRecognition();
+                recognition.lang = 'en-US';
+                recognition.interimResults = false;
+                recognition.maxAlternatives = 1;
+
+                Swal.fire({
+                    title: 'Listening...',
+                    text: 'Please speak now.',
+                    allowOutsideClick: false,
+                    showConfirmButton: false,
+                    didOpen: () => {
+                        recognition.start();
+                    }
+                });
+
+                recognition.onresult = function (event) {
+                    const spokenText = event.results[0][0].transcript;
+                    $('#textInput').val(spokenText);
+                };
+
+                recognition.onend = function () {
+                    Swal.close();
+                };
+
+                recognition.onerror = function (event) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Recognition Error',
+                        text: 'There was an error during voice recognition. Please try again.',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    console.log("Voice recognition error:", event);
+                };
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Voice Recognition Not Supported',
+                    text: 'Your browser does not support voice recognition.',
+                    timer: 3000,
+                    showConfirmButton: false
+                });
+            }
+        }
+    </script>
+    <!-- //tables -->
+
+
+    <!--/script-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/move-top.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/easing.js') }}"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 900);
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                    containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear' 
+                };
+            */
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+    </script>
+    <!--end-smooth-scrolling-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    <script>
+        function fileupload() {
+            $('#myModal4').modal('hide');
+            $('#fileUploadModal').modal('show');
+        }
+
+        function fileupload2() {
+            $('#myModal4').modal('hide');
+            $('#fileUploadModal2').modal('show');
+        }
+
+        function uploadAudio() {
+            const formData = new FormData(document.getElementById('uploadForm'));
+
+            Swal.fire({
+                title: 'Uploading...',
+                text: 'Please wait while your audio is being uploaded.',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            fetch('http://localhost:5000/upload', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    Swal.close();
+                    if (data.transcription) {
+                        $('#fileUploadModal').modal('hide');
+                        document.getElementById('textInput').value = data.transcription;
+                        $('#myModal4').modal('show');
+                    } else if (data.error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Upload Failed',
+                            text: data.error,
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                    }
+                })
+                .catch(error => {
+                    Swal.close();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'An error occurred while uploading the audio.',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    console.error('Error uploading audio:', error);
+                });
+        }
+
+        function uploadVideo() {
+            const formData = new FormData(document.getElementById('uploadvidForm'));
+
+            Swal.fire({
+                title: 'Uploading...',
+                text: 'Please wait while your video is being uploaded.',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            fetch('http://localhost:5000/upload', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    Swal.close(); // Close loading modal
+                    if (data.transcription) {
+                        $('#fileUploadModal2').modal('hide');
+                        document.getElementById('textInput').value = data.transcription;
+                        $('#myModal4').modal('show');
+                    } else if (data.error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Upload Failed',
+                            text: data.error,
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                    }
+                })
+                .catch(error => {
+                    Swal.close(); // Close loading modal
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'An error occurred while uploading the video.',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    console.error('Error uploading video:', error);
+                });
+        }
+
+
+    </script>
+
+
+
+</body>
+
+</html>
